@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install Library
+      run: sudo apt-get update && sudo apt-get install check
     - uses: actions/checkout@v4
     - name: make
       run: cd C2_s21_stringplus-3/src && make 
