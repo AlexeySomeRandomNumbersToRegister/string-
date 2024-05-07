@@ -8,20 +8,27 @@ on:
 
 jobs:
   build-linux:
+
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
+    - name: Install Library
+      run: sudo apt-get update && sudo apt-get install check
+    - uses: actions/checkout@v4
     - name: make
       run: cd C2_s21_stringplus-3/src && make 
     - name: make test
       run: cd C2_s21_stringplus-3/src && make test
     - name: make gcov_report
       run: cd C2_s21_stringplus-3/src && make gcov_report
-
+  
   build-macos:
     runs-on: macos-latest
+
     steps:
-    - uses: actions/checkout@v2
+    - name: Install Library
+      run: sudo apt-get update && sudo apt-get install check
+    - uses: actions/checkout@v4
     - name: make
       run: cd C2_s21_stringplus-3/src && make 
     - name: make test
