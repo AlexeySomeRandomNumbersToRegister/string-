@@ -12,19 +12,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: make
-      run: cd $GITHUB_WORKSPACE/src && make 
+      run: cd C2_s21_stringplus-3/src && make 
     - name: make test
-      run: cd $GITHUB_WORKSPACE/src && make test
+      run: cd C2_s21_stringplus-3/src && make test
     - name: make gcov_report
-      run: cd $GITHUB_WORKSPACE/src && make gcov_report
+      run: cd C2_s21_stringplus-3/src && make gcov_report
 
   build-macos:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
     - name: make
-      run: cd $GITHUB_WORKSPACE/src && make 
+      run: cd C2_s21_stringplus-3/src && make 
     - name: make test
-      run: cd $GITHUB_WORKSPACE/src && make test
+      run: cd C2_s21_stringplus-3/src && make test
     - name: make gcov_report
-      run: cd $GITHUB_WORKSPACE/src && make gcov_report
+      run: cd C2_s21_stringplus-3/src && make gcov_report
