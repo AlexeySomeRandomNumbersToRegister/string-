@@ -42,6 +42,7 @@ jobs:
         run: |
           cd C2_s21_stringplus-3/src
           mkdir -p gcov_report
+          sudo apt install gcovr
           gcovr --html-details -o gcov_report/index.html
 
       - name: Send coverage report to Coveralls
