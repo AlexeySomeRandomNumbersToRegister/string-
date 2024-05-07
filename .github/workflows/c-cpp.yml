@@ -18,9 +18,11 @@ jobs:
       run: sudo apt-get install gcovr
     - uses: actions/checkout@v4
     - name: make
-      run: cd C2_s21_stringplus-3/src && make
-    - name: make tests
-      run: cd C2_s21_stringplus-3/src && make test 
+      run: cd C2_s21_stringplus-3/src && make 
+    - name: make test
+      run: cd C2_s21_stringplus-3/src && make test
+    - name: make gcov_report
+      run: cd C2_s21_stringplus-3/src && make gcov_report
 
   coveralls:
     needs: [build-linux]
@@ -29,18 +31,5 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Install dependencies for Coveralls
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y lcov
-        sudo gem install coveralls-lcov
-
-    - name: Generate coverage report
-      run: |
-        cd C2_s21_stringplus-3/src
-        lcov --capture --directory . --output-file coverage.info
-        lcov --remove coverage.info '/usr/*' --output-file coverage.info
-        lcov --list coverage.info
-
     - name: Send coverage report to Coveralls
-      run: coveralls-lcov --repo-token ${{ secrets.COVERALLS_REPO_TOKEN }} coverage.info
+      run: coveralls-lcov --repo-token ${{ secrets.COVERALLS_REPO_TOKEN }}
