@@ -48,6 +48,7 @@ jobs:
         run: |
           pwd
           ls
+          sleep (5)
           coveralls-lcov coverage.info
           env:
             COVERALLS_REPO_TOKEN: ${{ secrets.YOUR_COVERALLS_REPO_TOKEN }}
