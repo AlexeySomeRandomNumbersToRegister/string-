@@ -47,8 +47,9 @@ jobs:
       - name: Upload coverage report to Coveralls
         run: |
           pwd
+          sleep 5
           ls
-          sleep (5)
+          sleep 5
           coveralls-lcov coverage.info
           env:
             COVERALLS_REPO_TOKEN: ${{ secrets.YOUR_COVERALLS_REPO_TOKEN }}
