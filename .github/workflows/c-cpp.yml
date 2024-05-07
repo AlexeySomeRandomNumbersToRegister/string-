@@ -45,7 +45,7 @@ jobs:
       - name: Upload coverage report to Coveralls
         uses: coverallsapp/github-action@v2
       
-      -name: ХЗ
+      - name: ХЗ
         run: coveralls-lcov coverage.info
         env:
           github-token: ${{ secrets.GITHUB_TOKEN }}
