@@ -21,6 +21,8 @@ jobs:
       run: cd C2_s21_stringplus-3/src && make 
     - name: make test
       run: cd C2_s21_stringplus-3/src && make test
+    - name: make gcov_report
+      run: cd C2_s21_stringplus-3/src && make gcov_report
 
   coveralls:
     needs: [build-linux]
