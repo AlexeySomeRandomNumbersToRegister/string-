@@ -41,11 +41,11 @@ jobs:
         
       - name: Check_2
         run: ls
-
-      - name: Upload coverage report to Coveralls
-        uses: coverallsapp/github-action@v2
       
       - name: ХЗ
         run: coveralls-lcov coverage.info
+
+      - name: Upload coverage report to Coveralls
+        uses: coverallsapp/github-action@v2
         env:
           github-token: ${{ secrets.GITHUB_TOKEN }}
