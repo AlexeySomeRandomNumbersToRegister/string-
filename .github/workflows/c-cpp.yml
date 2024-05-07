@@ -21,13 +21,14 @@ jobs:
       run: cd C2_s21_stringplus-3/src && make 
     - name: make test
       run: cd C2_s21_stringplus-3/src && make test
-    - name: make gcov_report
-      run: cd C2_s21_stringplus-3/src && make gcov_report
 
   coveralls:
     needs: [build-linux]
     runs-on: ubuntu-latest
     steps:
+    - name: Install coveralls-lcov
+      run: npm install -g coveralls-lcov
+
     - name: Checkout repository
       uses: actions/checkout@v4
 
