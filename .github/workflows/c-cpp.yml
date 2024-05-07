@@ -15,6 +15,9 @@ jobs:
 
       - name: Build and test
         run: cd C2_s21_stringplus-3/src/ && make test-coverage
+      
+      - name: Install gcovr
+        run: sudo upt install gcovr
 
       - name: Generate coverage report
         run: gcovr --root . --exclude tests/ --xml -o coverage.xml
