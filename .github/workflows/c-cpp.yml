@@ -20,11 +20,6 @@ jobs:
       run: cd C2_s21_stringplus-3/src && make 
     - name: make test
       run: cd C2_s21_stringplus-3/src && make test
-
-  coveralls:
-    needs: [build-linux]
-    runs-on: ubuntu-latest
-    steps:
     - name: Install coveralls-lcov
       run: sudo gem install coveralls-lcov
     - name: Checkout repository
