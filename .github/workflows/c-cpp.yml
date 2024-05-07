@@ -36,17 +36,12 @@ jobs:
       - name: Check
         run: ls
 
-  coveralls:
-    needs: [build-linux]
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Install coveralls-lcov
         run: sudo gem install coveralls-lcov
         
-      - name: Check
+      - name: Check_2
         run: ls
-        
+
       - name: Upload coverage report to Coveralls
         run: coveralls-lcov coverage.info
         env:
