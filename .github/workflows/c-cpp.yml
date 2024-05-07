@@ -44,6 +44,9 @@ jobs:
       - name: Install coveralls-lcov
         run: sudo gem install coveralls-lcov
         
+      - name: Check
+        run: ls
+        
       - name: Upload coverage report to Coveralls
         run: coveralls-lcov coverage.info
         env:
