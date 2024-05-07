@@ -27,4 +27,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: gcov-report
-        path: gcov_report/index.html
+        path: C2_s21_stringplus-3/src/gcov_report
