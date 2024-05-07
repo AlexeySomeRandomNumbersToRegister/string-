@@ -109,15 +109,15 @@ test: clean s21_string.a
 
 
 test-coverage: clean s21_string.a
-    $(CC) $(CFLAGS) -c tests/*.c $(ADD_LIB)
-    mv *.o tests/
-    $(CC) $(CFLAGS) *.c tests/*.o -o tests/all_tests.o -fprofile-arcs -lcheck -ftest-coverage $(ADD_LIB)
-    ./tests/all_tests.o
+	$(CC) $(CFLAGS) -c tests/*.c $(ADD_LIB)
+	mv *.o tests/
+	$(CC) $(CFLAGS) *.c tests/*.o -o tests/all_tests.o -fprofile-arcs -lcheck -ftest-coverage $(ADD_LIB)
+	./tests/all_tests.o
 
 gcov_report: test-coverage
-    mkdir -p gcov_report
-    gcovr --html-details -o gcov_report/index.html
-    rm -rf *.gcno *.gcda *.gcov *.info
+	mkdir -p gcov_report
+	gcovr --html-details -o gcov_report/index.html
+	rm -rf *.gcno *.gcda *.gcov *.info
 
 style: clean
 	clang-format -i -style='{BasedOnStyle: Google}' *.c  *.h */*.c
