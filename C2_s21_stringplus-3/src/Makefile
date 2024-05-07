@@ -81,7 +81,7 @@ ifeq ($(UNAME), Linux)
  ADD_LIB = -lcheck -lsubunit -lm -lrt -lpthread 
  CFLAGS += -lsubunit
  TEST_FLAGS = -pthread -lcheck_pic -pthread -lrt -lm -lsubunit
-	OPENER = xdg_open
+	OPENER = sensible-browser
 	endif
 ifeq ($(UNAME), Darwin)
  TEST_FLAGS = $(shell pkg-config --cflags --libs check)
