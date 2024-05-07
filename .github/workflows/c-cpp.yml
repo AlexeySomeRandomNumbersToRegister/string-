@@ -8,7 +8,6 @@ on:
 
 jobs:
   build-linux:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -21,8 +20,6 @@ jobs:
       run: cd C2_s21_stringplus-3/src && make 
     - name: make test
       run: cd C2_s21_stringplus-3/src && make test
-    - name: make gcov_report
-      run: cd C2_s21_stringplus-3/src && make gcov_report
 
   coveralls:
     needs: [build-linux]
@@ -32,9 +29,7 @@ jobs:
       run: sudo gem install coveralls-lcov
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Install coveralls-lcov
-      run: sudo gem install coveralls-lcov
     - name: Run coveralls-lcov
-      run: coveralls-lcov coverage.info
+      run: coveralls-lcov gcov_report/coverage.info
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.YOUR_COVERALLS_REPO_TOKEN }}
