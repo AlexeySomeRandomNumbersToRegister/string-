@@ -12,8 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install Library
+    - name: Install check
       run: sudo apt-get update && sudo apt-get install check
+    - name: Install gcovr
+      run: sudo apt-get install gcovr
     - uses: actions/checkout@v4
     - name: make
       run: cd C2_s21_stringplus-3/src && make 
@@ -26,8 +28,10 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - name: Install Library
-      run: sudo apt-get update && sudo apt-get install check
+    - name: Install check
+      run: brew install check
+    - name: Install gcovr
+      run: brew install gcovr
     - uses: actions/checkout@v4
     - name: make
       run: cd C2_s21_stringplus-3/src && make 
