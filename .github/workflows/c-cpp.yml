@@ -22,8 +22,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build and run tests
-        run: make test
+      - name: make test
+        run: cd C2_s21_stringplus-3/src && make test
 
       - name: Generate coverage report
         run: |
