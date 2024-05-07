@@ -111,7 +111,8 @@ test: clean s21_string.a
 gcov_report: test
 	mkdir -p gcov_report
 	gcovr --html-details -o gcov_report/index.html
-	gcovr -r . --gcov-executable gcov -o coverage.info
+	rm -rf *.gcno *.gcda *.gcov *.info
+	# $(OPENER) ./gcov_report/index.html
 
 style: clean
 	clang-format -i -style='{BasedOnStyle: Google}' *.c  *.h */*.c
