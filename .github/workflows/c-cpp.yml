@@ -45,6 +45,7 @@ jobs:
           mkdir -p gcov_report
           gcovr --html-details -o gcov_report/index.html
           gcovr -r . --gcov-executable gcov -o coverage.info
+          mv coverage.info gcov_report/
 
       - name: checking
         run: ls && cd C2_s21_stringplus-3/ && ls && cd src/ && ls && cd gcov_report && ls
