@@ -13,44 +13,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install check
-        run: sudo apt-get update && sudo apt-get install check
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lcov
+          gem install coveralls-lcov
 
-      - name: Install gcovr
-        run: sudo apt-get install gcovr
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/checkout@v4
+      - name: Configure for coverage
+        run: |
+          ./autogen.sh
+          ./configure --enable-coverage
 
-      - name: make
-        run: cd C2_s21_stringplus-3/src && make 
+      - name: Build and run tests
+        run: make test
 
-      - name: make test
-        run: cd C2_s21_stringplus-3/src && make test
+      - name: Generate coverage report
+        run: |
+          lcov --compat-libtool --directory . --capture --output-file coverage.info
 
   coveralls:
     needs: [build-linux]
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install coveralls-lcov
-        run: sudo gem install coveralls-lcov
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Run gcovr and generate coverage report
-        run: |
-          sudo apt install gcovr
-          cd C2_s21_stringplus-3/src
-          mkdir -p gcov_report
-          gcovr --html-details -o gcov_report/index.html
-          gcovr -r . --gcov-executable gcov -o coverage.info
-          mv coverage.info gcov_report/
-
-      - name: checking
-        run: ls && cd C2_s21_stringplus-3/ && ls && cd src/ && ls && cd gcov_report && ls
-      - name: Send coverage report to Coveralls  
-        run: coveralls-lcov C2_s21_stringplus-3/src/gcov_report/coverage.info
+      - name: Upload coverage report to Coveralls
+        run: coveralls-lcov coverage.info
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.YOUR_COVERALLS_REPO_TOKEN }}
-
