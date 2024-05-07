@@ -81,10 +81,6 @@ ifeq ($(UNAME), Linux)
  ADD_LIB = -lcheck -lsubunit -lm -lrt -lpthread 
  CFLAGS += -lsubunit
  TEST_FLAGS = -pthread -lcheck_pic -pthread -lrt -lm -lsubunit
- ifneq ("$(wildcard /proc/version)","")
-	OPENER = wslview
-	endif
-else
 	OPENER = xdg_open
 	endif
 ifeq ($(UNAME), Darwin)
