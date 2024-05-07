@@ -45,6 +45,9 @@ jobs:
         run: sudo gem install coveralls-lcov
         
       - name: Upload coverage report to Coveralls
-        run: coveralls-lcov coverage.info
+        run: |
+        pwd
+        ls
+        coveralls-lcov coverage.info
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.YOUR_COVERALLS_REPO_TOKEN }}
