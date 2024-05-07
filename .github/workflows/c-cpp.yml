@@ -22,11 +22,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Configure for coverage
-        run: |
-          ./autogen.sh
-          ./configure --enable-coverage
-
       - name: Build and run tests
         run: make test
 
