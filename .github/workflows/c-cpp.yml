@@ -23,3 +23,8 @@ jobs:
       run: cd C2_s21_stringplus-3/src && make test
     - name: make gcov_report
       run: cd C2_s21_stringplus-3/src && make gcov_report
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: gcov-report
+        path: gcov_report/index.html

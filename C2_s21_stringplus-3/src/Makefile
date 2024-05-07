@@ -112,7 +112,6 @@ gcov_report: test
 	mkdir -p gcov_report
 	gcovr --html-details -o gcov_report/index.html
 	rm -rf *.gcno *.gcda *.gcov *.info
-	$(OPENER) ./gcov_report/index.html
 
 style: clean
 	clang-format -i -style='{BasedOnStyle: Google}' *.c  *.h */*.c
