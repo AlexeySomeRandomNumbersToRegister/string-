@@ -8,6 +8,7 @@ on:
 
 jobs:
   build-linux:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -24,8 +25,9 @@ jobs:
   coveralls:
     needs: [build-linux]
     runs-on: ubuntu-latest
-
     steps:
+    - name: Install coveralls-lcov
+      run: sudo gem install coveralls-lcov
     - name: Checkout repository
       uses: actions/checkout@v4
     - name: Install coveralls-lcov
