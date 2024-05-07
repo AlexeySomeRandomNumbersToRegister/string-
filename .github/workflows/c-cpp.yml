@@ -18,7 +18,9 @@ jobs:
       run: sudo apt-get install gcovr
     - uses: actions/checkout@v4
     - name: make
-      run: cd C2_s21_stringplus-3/src && make 
+      run: cd C2_s21_stringplus-3/src && make
+    - name: make tests
+      run: cd C2_s21_stringplus-3/src && make test 
 
   coveralls:
     needs: [build-linux]
