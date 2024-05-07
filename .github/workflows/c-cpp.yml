@@ -8,7 +8,6 @@ on:
 
 jobs:
   build-linux:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -25,12 +24,13 @@ jobs:
   coveralls:
     needs: [build-linux]
     runs-on: ubuntu-latest
-    steps:
-    - name: Install coveralls-lcov
-      run: sudo gem install coveralls-lcov
 
+    steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
-    - name: Send coverage report to Coveralls
-      run: coveralls-lcov --repo-token ${{ secrets.COVERALLS_REPO_TOKEN }} coverage.info
+    - name: Install coveralls-lcov
+      run: sudo gem install coveralls-lcov
+    - name: Run coveralls-lcov
+      run: coveralls-lcov coverage.info
+      env:
+        COVERALLS_REPO_TOKEN: ${{ E2nc10h8UuHcxnE5PMfmVBxQfLrMxyZ9G }}
