@@ -30,6 +30,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
     - name: Run coveralls-lcov
-      run: coveralls-lcov C2_s21_stringplus-3/src/coverage.info
+      run: ls && coveralls-lcov C2_s21_stringplus-3/src/coverage.info
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.YOUR_COVERALLS_REPO_TOKEN }}
