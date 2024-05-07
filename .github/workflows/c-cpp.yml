@@ -43,7 +43,8 @@ jobs:
           sudo apt install gcovr
           cd C2_s21_stringplus-3/src
           mkdir -p gcov_report
-          gcovr -r . --html-details -o gcov_report/index.html
+          gcovr --html-details -o gcov_report/index.html
+	        gcovr -r . --gcov-executable gcov -o coverage.info
 
       - name: checking
         run: ls && cd C2_s21_stringplus-3/ && ls && cd src/ && ls && cd gcov_report && ls
